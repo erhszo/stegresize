@@ -1,5 +1,11 @@
 # StegResize
 
+JPEG header steganography and dimension manipulation tool for CTF forensics challenges.
+
+Extracts and modifies the SOI (Start of Image) marker metadata in JPEG files, specifically the height and width fields in the JPEG frame header (FF C0 marker). Allows interactive resizing of embedded image dimensions while preserving or altering hidden data encoded in the header structure. Useful for analyzing steganographic payloads hidden in JPEG headers, recovering obfuscated dimensions, or reversing dimension-based steganography techniques.
+
+Common CTF use: Extract flag data from JPEG headers where metadata has been tampered with or hidden, or decode challenges where image dimensions encode information via header manipulation.
+
 Usage:
 
 `stegresize <image_file>`
@@ -30,7 +36,7 @@ Here are the steps to install the `stegresize` command:
 2. Clone the repository by running the following command:
 
 ```bash
-git clone https://github.com/erhszo/stegresize.git
+git clone https://github.com/chewbaqa/stegresize.git
 ```
 
 3. Navigate to the directory where the repository was cloned:
