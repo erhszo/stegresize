@@ -2,7 +2,9 @@
 
 JPEG header steganography and dimension manipulation tool for CTF forensics challenges.
 
-Extracts and modifies the SOI (Start of Image) marker metadata in JPEG files, specifically the height and width fields in the JPEG frame header (FF C0 marker). Allows interactive resizing of embedded image dimensions while preserving or altering hidden data encoded in the header structure. Useful for analyzing steganographic payloads hidden in JPEG headers, recovering obfuscated dimensions, or reversing dimension-based steganography techniques.
+Reads and modifies the height and width fields in a JPEG's SOF0 (Start of Frame, `FF C0`) segment. A common CTF trick is to shrink the height in this header so part of the image is cut off when viewed, even though the pixel data is still in the file. StegResize lets you change the height and width interactively to reveal the hidden or cropped part of the image.
+
+Useful for recovering images with tampered dimensions, finding flags hidden below the visible area, and solving dimension-based steganography challenges.
 
 ![sof0](/example/jpegsof0.png "JPEG SOF0 Explanation")
 
