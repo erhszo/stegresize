@@ -1,8 +1,8 @@
 # StegResize
 
-**Fix or change the height and width of a JPEG to reveal hidden or cropped parts of the image.** Built for CTF steganography and forensics challenges.
+**Fix or change the height of a JPEG to reveal hidden or cropped parts of the image.** Built for CTF steganography and forensics challenges.
 
-Reads and modifies the height and width fields in a JPEG's SOF0 (Start of Frame, `FF C0`) segment. A common CTF trick is to shrink the height in this header so part of the image is cut off when viewed, even though the pixel data is still in the file. StegResize lets you change the height and width interactively to reveal the hidden or cropped part of the image.
+Reads and modifies the height and width fields in a JPEG's SOF0 (Start of Frame, `FF C0`) segment. A common CTF trick is to shrink the height in this header so part of the image is cut off when viewed, even though the pixel data is still in the file. StegResize lets you change the height interactively to reveal the hidden or cropped part of the image.
 
 Useful for recovering images with tampered dimensions, finding flags hidden below the visible area, and solving dimension-based steganography challenges.
 
@@ -81,6 +81,12 @@ printf '\x07\x08' | dd of=image.jpg bs=1 seek=163 conv=notrunc
 ```
 
 StegResize automates this and lets you try different values quickly.
+
+### Why height, not width
+
+JPEG pixel data is stored row by row, and the decoder uses the width in the header to know where each row ends. Raising the height just tells it to draw more rows, so the hidden part appears cleanly. Changing the width makes every row wrap in the wrong place, which shifts the blocks and produces a slanted, scrambled image.
+
+StegResize also asks for a width, but only change it if a challenge has tampered with the width itself and you know the correct value. Otherwise, type the original width again when prompted.
 
 ---
 
