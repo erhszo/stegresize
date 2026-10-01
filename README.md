@@ -38,7 +38,7 @@ Here are the steps to install the `stegresize` command:
 2. Clone the repository by running the following command:
 
 ```bash
-git clone https://github.com/chewbaqa/stegresize.git
+git clone https://github.com/erhszo/stegresize.git
 ```
 
 3. Navigate to the directory where the repository was cloned:
